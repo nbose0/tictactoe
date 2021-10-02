@@ -5,9 +5,9 @@ import java.util.Optional;
 public abstract class Square<T> {
 
     protected T _value;
-    
+
     public boolean isEmpty() {
-        return _value != null;
+        return _value == null;
     }
 
     public Optional<T> getValue() {

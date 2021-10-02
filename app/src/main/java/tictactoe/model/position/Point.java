@@ -20,4 +20,9 @@ public class Point {
     public int column() {
         return _column;
     }
+
+    @Override
+    public String toString() {
+        return _row + ", " + _column;
+    }
 }

@@ -13,6 +13,6 @@ public class TicTacToeSquare extends Square<Symbol> {
 
     @Override
     public String toString() {
-        return isEmpty() ? _value.name() : " ";
+        return isEmpty() ? " " :  _value.name();
     }
 }

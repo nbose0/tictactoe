@@ -12,11 +12,11 @@ public class RandomMovePlayerController implements PlayerController {
     private final Random _randomGenerator;
 
     public RandomMovePlayerController() {
-        _randomGenerator = new Random(TicTacToeBoard.ROW_SIZE);
+        _randomGenerator = new Random();
     }
 
     @Override
     public Position<Point> getMove() {
-        return Position.of(Point.of(_randomGenerator.nextInt(), _randomGenerator.nextInt()));
+        return Position.of(Point.of(_randomGenerator.nextInt(TicTacToeBoard.ROW_SIZE), _randomGenerator.nextInt(TicTacToeBoard.ROW_SIZE)));
     }
 }

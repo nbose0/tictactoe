@@ -64,7 +64,7 @@ public abstract class GridBoard<B, T extends Square<B>> implements Board<Point, 
     }
 
     public void setSquare(T square, Position<Point> p) {
-        this._board[p.get().row()][p.get().column()] = square;
+        _board[p.get().row()][p.get().column()] = square;
     }
 
     public boolean isFull() {

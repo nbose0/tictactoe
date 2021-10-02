@@ -39,38 +39,41 @@ public abstract class Game<C, B, T extends Square<B>, D extends Board<C, B, T>> 
     }
 
     public void printState(Player currentPlayer) {
-        System.out.printf("Current Player : %s\n", currentPlayer);
+        System.out.printf("Current Player : %s\n\n", currentPlayer);
         _board.print();
+        System.out.println("\n");
+    }
+
+    public void printWinner() {
+        if (hasWinner()) {
+            System.out.println("And the winner is " + _winner);
+        } else {
+            System.out.println("It's a draw.");
+        }
     }
 
     public Player play(boolean print) {
-        Player currentPlayer = _playerSequence.getFirst();
+        Player currentPlayer = _playerSequence.poll();
         while (!isGameOver()) {
             Pair<Symbol, Position<C>> move;
             do {
                 move = currentPlayer.getMove();
             } while (!isValidMove(move.second()));
             _board.setSquare(createSquareFromMove(move), move.second());
-            if (isWinningMove(move.second())) {
-                _winner = currentPlayer;
-            }
+            _winner = isWinningMove(move.second()) ? currentPlayer : null;
             if (print) {
                 printState(currentPlayer);
             }
             currentPlayer = switchPlayer(currentPlayer);
         }
         if (print) {
-            if (hasWinner()) {
-                System.out.println("And the winner is " + _winner);
-            } else {
-                System.out.println("It's a draw.");
-            }
+            printWinner();
         }
         return _winner;
     }
 
     private Player switchPlayer(Player currentPlayer) {
-        _playerSequence.offer(currentPlayer);
+        _playerSequence.addLast(currentPlayer);
         return _playerSequence.poll();
     }
 

@@ -15,4 +15,9 @@ public class Position<T> {
     public T get() {
         return _position;
     }
+
+    @Override
+    public String toString() {
+        return "Position " + _position;
+    }
 }
