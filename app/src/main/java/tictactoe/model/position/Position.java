@@ -1,6 +1,4 @@
-package tictactoe.model;
-
-import tictactoe.model.position.Point;
+package tictactoe.model.position;
 
 public class Position<T> {
 

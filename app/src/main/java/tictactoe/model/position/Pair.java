@@ -1,4 +1,4 @@
-package tictactoe.model;
+package tictactoe.model.position;
 
 public class Pair<T, V> {
 
