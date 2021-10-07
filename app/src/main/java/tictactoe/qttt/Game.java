@@ -37,28 +37,15 @@ public class Game {
     }
 
     public void printState(Pair<Point, Point> previousMove, Point bigBoardMove, Point miniBoardMove, Player currentPlayer) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\n\nPrevious move : " + previousMove.first() + ", " + previousMove.second() + "\n");
-        sb.append("Current player : " + currentPlayer + "\n");
-        sb.append("Move : " + bigBoardMove + ", " + miniBoardMove + "\n");
+        String sb = "\n\nPrevious move : " + previousMove.first() + ", " + previousMove.second() + "\n" +
+                "Current player : " + currentPlayer + "\n" +
+                "Move : " + bigBoardMove + ", " + miniBoardMove + "\n";
         System.out.println(sb);
         printRow();
-//        for (int i = 0 ; i < _board.length; i++) {
-//            for (int j = 0; j < _board.length; j++) {
-//                if (_board[i][j].getWinner().isPresent()) {
-//                    sb.append(_board[i][j].getWinner().get());
-//                } else {
-//                    sb.append(_board[i][j].toString());
-//                    sb.append("\n\n");
-//                }
-//            }
-//            sb.append("\r\r");
-//        }
         printWinnersBoard();
         if (_winner != null) {
             System.out.println("Winner : " + _winner + "\n");
         }
-//        System.out.println(sb);
     }
 
     public void printRow() {
