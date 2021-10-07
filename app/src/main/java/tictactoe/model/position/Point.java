@@ -23,6 +23,10 @@ public class Point {
 
     @Override
     public String toString() {
-        return _row + ", " + _column;
+        return "(" + _row + ", " + _column + ")";
+    }
+
+    public Point deepCopy() {
+        return Point.of(this.row(), this.column());
     }
 }

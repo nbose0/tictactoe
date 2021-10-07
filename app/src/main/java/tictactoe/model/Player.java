@@ -2,6 +2,7 @@ package tictactoe.model;
 
 import tictactoe.controller.PlayerController;
 import tictactoe.model.position.Pair;
+import tictactoe.model.position.Point;
 import tictactoe.model.position.Position;
 
 public class Player {
@@ -34,6 +35,10 @@ public class Player {
 
     public <T> Pair<Symbol, Position<T>> getMove() {
         return Pair.of(_symbol, _contoller.getMove());
+    }
+
+    public Point getPointMove() {
+        return _contoller.getPointMove();
     }
 
     @Override
