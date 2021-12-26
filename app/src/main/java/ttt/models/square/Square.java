@@ -1,8 +1,25 @@
-package ttt.models;
+package ttt.models.square;
 
-public interface Square <V extends Value> {
+import ttt.models.value.Value;
 
-    V getValue();
+public class Square <V extends Value> {
 
-    void setValue(V value);
+    protected V _value;
+
+    protected Square(V value) {
+        this._value = value;
+    }
+
+    public V getValue() {
+        return _value;
+    }
+
+    public void setValue(V value) {
+        _value = value;
+    }
+
+    public boolean areSquaresSame(Square<V> squareToCompare) {
+        return _value.areValuesSame(squareToCompare.getValue());
+    }
+
 }

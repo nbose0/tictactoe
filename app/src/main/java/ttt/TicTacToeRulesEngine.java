@@ -6,6 +6,9 @@ import ttt.models.position.Coordinate;
 import ttt.models.position.CoordinateValue;
 import ttt.models.square.Square;
 import ttt.models.value.Value;
+import ttt.original.Board;
+
+import java.util.Optional;
 
 public abstract class TicTacToeRulesEngine<C extends CoordinateValue, P extends Coordinate<C>, V extends Value, S extends Square<V>, B extends TicTacToeBoard<C, P, V, S>>  {
 
@@ -25,5 +28,11 @@ public abstract class TicTacToeRulesEngine<C extends CoordinateValue, P extends 
     public abstract boolean isDiagonalDownWinner(B board, P position, Token token);
 
     public abstract boolean isDiagonalUpWinner(B board, P position, Token token);
+
+    public abstract boolean isGameOver(B board, P position, Token token);
+
+    public abstract boolean isGameOver(B board);
+
+    public abstract Optional<Token> getWinner(Board board);
 
 }

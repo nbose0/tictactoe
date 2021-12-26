@@ -1,2 +1,5 @@
-package ttt.controllers;public class ControllersFactory {
+package ttt.controllers;
+
+public class ControllersFactory {
+
 }

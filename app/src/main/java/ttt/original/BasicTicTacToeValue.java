@@ -1,6 +1,7 @@
 package ttt.original;
 
 import ttt.models.Token;
+import ttt.models.square.Square;
 import ttt.models.value.Value;
 
 public class BasicTicTacToeValue implements Value {
@@ -13,6 +14,14 @@ public class BasicTicTacToeValue implements Value {
 
     public Token getToken() {
         return _token;
+    }
+
+    @Override
+    public boolean areValuesSame(Value valueToCompare) {
+        if (valueToCompare instanceof BasicTicTacToeValue && ((BasicTicTacToeValue) valueToCompare).getToken() == _token) {
+            return true;
+        }
+        return false;
     }
 
     public static BasicTicTacToeValue of(Token token) {

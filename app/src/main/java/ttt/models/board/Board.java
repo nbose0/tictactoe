@@ -1,5 +1,7 @@
-package ttt.models;
+package ttt.models.board;
 
+import ttt.models.square.Square;
+import ttt.models.value.Value;
 import ttt.models.position.Position;
 
 import java.util.Optional;

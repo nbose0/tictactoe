@@ -8,24 +8,29 @@ import ttt.models.position.Coordinate1D;
 import ttt.original.Board;
 
 import java.util.Random;
+import java.util.Scanner;
 
-public class RandomPlayerController extends PlayerController {
+public class HumanPlayerController extends PlayerController {
 
     private final Random _randomGenerator;
+    private final Scanner _scanner;
 
-    public RandomPlayerController(Player player) {
+    public HumanPlayerController(Player player, Scanner scanner) {
         super(player);
         _randomGenerator = new Random();
+        _scanner = scanner;
     }
 
-    public static RandomPlayerController of(Token token) {
-        return new RandomPlayerController(Player.of(token, token.name()));
+    public static HumanPlayerController of(Player player, Scanner scanner) {
+        return new HumanPlayerController(player, scanner);
     }
 
     @Override
     public Pair<Coordinate1D, Token> getMove(Board board) {
-        int row = _randomGenerator.nextInt(TicTacToeBoard.BOARD_SIDE_LENGTH);
-        int col = _randomGenerator.nextInt(TicTacToeBoard.BOARD_SIDE_LENGTH);
+        System.out.println("Please enter next move:\nRow: ");
+        int row = _scanner.nextInt();
+        System.out.println("Col: ");
+        int col = _scanner.nextInt();
         return Pair.of(Coordinate1D.of(row, col), _player.getToken());
     }
 

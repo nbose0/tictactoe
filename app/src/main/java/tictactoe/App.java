@@ -7,7 +7,6 @@ import tictactoe.model.Player;
 import tictactoe.model.Symbol;
 import tictactoe.qttt.Game;
 import tictactoe.ttt.controller.RandomMovePlayerController;
-import tictactoe.ttt.model.TicTacToeGame;
 
 public class App {
 

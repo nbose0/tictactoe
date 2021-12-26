@@ -1,6 +1,7 @@
 package tictactoe.ttt.controller;
 
 import tictactoe.controller.PlayerController;
+import tictactoe.model.board.Board;
 import tictactoe.model.position.Point;
 import tictactoe.model.position.Position;
 import tictactoe.ttt.model.TicTacToeBoard;
@@ -22,10 +23,16 @@ public class RandomMovePlayerController implements PlayerController {
 
 
     @Override
+    public Point getMove(Board board) {
+        int row = _randomGenerator.nextInt(TicTacToeBoard.ROW_SIZE);
+        int col = _randomGenerator.nextInt(TicTacToeBoard.ROW_SIZE);
+        return Point.of(row, col);
+    }
+
+    @Override
     public Point getPointMove() {
         int row = _randomGenerator.nextInt(TicTacToeBoard.ROW_SIZE);
         int col = _randomGenerator.nextInt(TicTacToeBoard.ROW_SIZE);
-//        System.out.println("row : " + row + ", col : " + col);
         return Point.of(row, col);
     }
 }

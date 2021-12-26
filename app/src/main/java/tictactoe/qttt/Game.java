@@ -198,7 +198,7 @@ public class Game {
     }
 
     private boolean isColumnWon(int column) {
-        Optional<Symbol> firstSquareSymbol = _board[0][column].getWinner().map(Player::symbol);;
+        Optional<Symbol> firstSquareSymbol = _board[0][column].getWinner().map(Player::symbol);
         if (firstSquareSymbol.isEmpty()) {
             return false;
         }

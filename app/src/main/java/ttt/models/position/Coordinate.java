@@ -1,15 +1,20 @@
-package ttt.models;
+package ttt.models.position;
 
-public class Coordinate implements Position, CoordinateValue {
+public class Coordinate<C extends CoordinateValue> implements Position, CoordinateValue {
 
-    CoordinateValue _x;
-    CoordinateValue _y;
+    C _x;
+    C _y;
 
-    CoordinateValue x(){
+    protected Coordinate(C x, C y) {
+        this._x = x;
+        this._y = y;
+    }
+
+    public C x(){
         return _x;
     }
 
-    CoordinateValue y() {
+    public C y() {
         return _y;
     }
 }

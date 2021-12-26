@@ -15,4 +15,8 @@ public class BasicTicTacToeSquare extends Square<BasicTicTacToeValue> {
     public void print() {
         System.out.printf(" %s ", _value.getToken().name());
     }
+
+    public BasicTicTacToeSquare copy() {
+        return new BasicTicTacToeSquare(this._value);
+    }
 }
