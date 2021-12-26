@@ -2,9 +2,9 @@ package ttt.original.player.ai;
 
 import ttt.models.Token;
 import ttt.models.position.Coordinate1D;
-import ttt.original.Board;
-import ttt.original.BoardController;
-import ttt.original.RuleEngine;
+import ttt.original.BasicBoard;
+import ttt.original.BasicBoardController;
+import ttt.original.BasicRuleEngine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,21 +14,21 @@ import static ttt.models.TerminalState.*;
 
 public class AI {
 
-    private final RuleEngine _ruleEngine;
+    private final BasicRuleEngine _Basic_ruleEngine;
     private final TreeBuilder _treeBuilder;
     private final Random _random;
 
     private Node _root;
     private Node _currentNode;
 
-    AI(RuleEngine ruleEngine, TreeBuilder treeBuilder, Random random) {
-        _ruleEngine = ruleEngine;
+    AI(BasicRuleEngine basicRuleEngine, TreeBuilder treeBuilder, Random random) {
+        _Basic_ruleEngine = basicRuleEngine;
         _treeBuilder = treeBuilder;
         _random = random;
     }
 
     public static AI of() {
-        return new AI(RuleEngine.of(), TreeBuilder.of(), new Random());
+        return new AI(BasicRuleEngine.of(), TreeBuilder.of(), new Random());
     }
 
     public Node buildTreeWithValues(Token playerToken) {
@@ -38,14 +38,14 @@ public class AI {
         return root;
     }
 
-    public Coordinate1D makeMove(Board currentBoard, Token playerToken) {
+    public Coordinate1D makeMove(BasicBoard currentBasicBoard, Token playerToken) {
         if (_root == null) {
             _root = buildTreeWithValues(playerToken);
             _currentNode = _root;
         }
 
         for (Node node : _currentNode.getChildren()) {
-            if (node.getBoard().areBoardsSame(currentBoard)) {
+            if (node.getBoard().areBoardsSame(currentBasicBoard)) {
                 _currentNode = node;
             }
         }
@@ -53,7 +53,7 @@ public class AI {
         System.out.println("Possible Options: ");
         for (Node node : _currentNode.getChildren()) {
             System.out.printf("\nValue: %d, depth: %d\n", node._value, node._depth);
-            BoardController.printS(node.getBoard());
+            BasicBoardController.printS(node.getBoard());
         }
 
         _currentNode = moveWithMax(_currentNode.getChildren());
@@ -67,9 +67,9 @@ public class AI {
             return currentNode;
         }
         if (currentNode.isTerminal()) {
-            if (_ruleEngine.getWinner(currentNode.getBoard()).map(winner -> winner == playerToken).orElseGet(() -> false)) {
+            if (_Basic_ruleEngine.getWinner(currentNode.getBoard()).map(winner -> winner == playerToken).orElseGet(() -> false)) {
                 currentNode.setValue(WIN.val());
-            } else if (_ruleEngine.getWinner(currentNode.getBoard()).map(winner -> winner != playerToken).orElseGet(() -> false)) {
+            } else if (_Basic_ruleEngine.getWinner(currentNode.getBoard()).map(winner -> winner != playerToken).orElseGet(() -> false)) {
                 currentNode.setValue(LOSS.val());
             } else {
                 currentNode.setValue(STALEMATE.val());

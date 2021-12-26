@@ -3,30 +3,29 @@ package ttt.original.player;
 import ttt.models.Pair;
 import ttt.models.Player;
 import ttt.models.Token;
-import ttt.models.board.TicTacToeBoard;
 import ttt.models.position.Coordinate1D;
-import ttt.original.Board;
+import ttt.original.BasicBoard;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class HumanPlayerController extends PlayerController {
+public class BasicHumanPlayerController extends BasicPlayerController {
 
     private final Random _randomGenerator;
     private final Scanner _scanner;
 
-    public HumanPlayerController(Player player, Scanner scanner) {
+    public BasicHumanPlayerController(Player player, Scanner scanner) {
         super(player);
         _randomGenerator = new Random();
         _scanner = scanner;
     }
 
-    public static HumanPlayerController of(Player player, Scanner scanner) {
-        return new HumanPlayerController(player, scanner);
+    public static BasicHumanPlayerController of(Player player, Scanner scanner) {
+        return new BasicHumanPlayerController(player, scanner);
     }
 
     @Override
-    public Pair<Coordinate1D, Token> getMove(Board board) {
+    public Pair<Coordinate1D, Token> getMove(BasicBoard basicBoard) {
         System.out.println("Please enter next move:\nRow: ");
         int row = _scanner.nextInt();
         System.out.println("Col: ");

@@ -9,19 +9,19 @@ import java.util.*;
 
 public class TreeBuilder {
 
-    private final RuleEngine _ruleEngine;
+    private final BasicRuleEngine _Basic_ruleEngine;
 
-    TreeBuilder(RuleEngine ruleEngine) {
-        _ruleEngine = ruleEngine;
+    TreeBuilder(BasicRuleEngine basicRuleEngine) {
+        _Basic_ruleEngine = basicRuleEngine;
     }
 
     public static TreeBuilder of() {
-        return new TreeBuilder(RuleEngine.of());
+        return new TreeBuilder(BasicRuleEngine.of());
     }
 
     public Node buildTree() {
         Token currentToken = Token.X;
-        Node root = Node.of(Board.of(), 0);
+        Node root = Node.of(BasicBoard.of(), 0);
 
         Queue<Node> nextNodes = new ArrayDeque<>();
         nextNodes.add(root);
@@ -30,7 +30,7 @@ public class TreeBuilder {
         int currentLevelSize = nextNodes.size();
         while (!nextNodes.isEmpty()) {
             Node currentNode = nextNodes.poll();
-            if (!_ruleEngine.isGameOver(currentNode.getBoard())) {
+            if (!_Basic_ruleEngine.isGameOver(currentNode.getBoard())) {
                 List<Node> children = buildChildren(currentNode, currentToken, depth);
                 currentNode.setChildren(children);
                 nextNodes.addAll(children);
@@ -49,10 +49,10 @@ public class TreeBuilder {
         List<Node> children = new ArrayList<>();
         for (int i = 0; i < TicTacToeBoard.BOARD_SIDE_LENGTH; i++) {
             for (int j = 0; j < TicTacToeBoard.BOARD_SIDE_LENGTH; j++) {
-                Board board = parentNode.getBoard().copy();
-                if (board.getSquare(Coordinate1D.of(i, j)).isEmpty()) {
-                    board.setSquare(Coordinate1D.of(i, j), BasicTicTacToeSquare.of(BasicTicTacToeValue.of(token)));
-                    children.add(Node.of(board, Coordinate1D.of(i, j), depth));
+                BasicBoard basicBoard = parentNode.getBoard().copy();
+                if (basicBoard.getSquare(Coordinate1D.of(i, j)).isEmpty()) {
+                    basicBoard.setSquare(Coordinate1D.of(i, j), BasicSquare.of(BasicValue.of(token)));
+                    children.add(Node.of(basicBoard, Coordinate1D.of(i, j), depth));
                 }
             }
         }

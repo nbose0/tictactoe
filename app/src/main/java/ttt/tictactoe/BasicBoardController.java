@@ -1,6 +1,6 @@
 package ttt.original;
 
-import ttt.controllers.TicTacToeBoardContoller;
+import ttt.controllers.BoardContoller;
 import ttt.models.Token;
 import ttt.models.board.TicTacToeBoard;
 import ttt.models.position.Coordinate1D;
@@ -8,22 +8,22 @@ import ttt.models.position.IntegerCoordinateValue;
 
 import java.util.Optional;
 
-public class BoardController extends TicTacToeBoardContoller<IntegerCoordinateValue, Coordinate1D, BasicTicTacToeValue, BasicTicTacToeSquare, Board> {
+public class BasicBoardController extends BoardContoller<IntegerCoordinateValue, Coordinate1D, BasicValue, BasicSquare, BasicBoard> {
 
-    BoardController(Board board) {
-        super(board);
+    BasicBoardController(BasicBoard basicBoard) {
+        super(basicBoard);
     }
 
     @Override
     public void set(Coordinate1D position, Token token) {
-        _board.setSquare(position, BasicTicTacToeSquare.of(BasicTicTacToeValue.of(token)));
+        _board.setSquare(position, BasicSquare.of(BasicValue.of(token)));
     }
 
     @Override
     public void print() {
         for (int i = 0; i < TicTacToeBoard.BOARD_SIDE_LENGTH; i++) {
             for (int j = 0; j < TicTacToeBoard.BOARD_SIDE_LENGTH; j++) {
-                Optional<BasicTicTacToeSquare> maybeSquare = _board.getSquare(Coordinate1D.of(i, j));
+                Optional<BasicSquare> maybeSquare = _board.getSquare(Coordinate1D.of(i, j));
                 if (maybeSquare.isEmpty()) {
                     System.out.print("   ");
                 } else {
@@ -39,10 +39,10 @@ public class BoardController extends TicTacToeBoardContoller<IntegerCoordinateVa
         }
     }
 
-    public static void printS(Board board) {
+    public static void printS(BasicBoard basicBoard) {
         for (int i = 0; i < TicTacToeBoard.BOARD_SIDE_LENGTH; i++) {
             for (int j = 0; j < TicTacToeBoard.BOARD_SIDE_LENGTH; j++) {
-                Optional<BasicTicTacToeSquare> maybeSquare = board.getSquare(Coordinate1D.of(i, j));
+                Optional<BasicSquare> maybeSquare = basicBoard.getSquare(Coordinate1D.of(i, j));
                 if (maybeSquare.isEmpty()) {
                     System.out.print("   ");
                 } else {
@@ -58,7 +58,7 @@ public class BoardController extends TicTacToeBoardContoller<IntegerCoordinateVa
         }
     }
 
-    public static BoardController of() {
-        return new BoardController(Board.of());
+    public static BasicBoardController of() {
+        return new BasicBoardController(BasicBoard.of());
     }
 }

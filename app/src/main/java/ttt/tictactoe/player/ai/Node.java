@@ -1,7 +1,7 @@
 package ttt.original.player.ai;
 
 import ttt.models.position.Coordinate1D;
-import ttt.original.Board;
+import ttt.original.BasicBoard;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,29 +9,29 @@ import java.util.List;
 
 public class Node {
 
-    Board _board;
+    BasicBoard _Basic_board;
     List<Node> _children;
     Coordinate1D _move;
     int _value;
     int _depth;
 
-    Node(Board board, List<Node> children, int depth) {
-        _board = board;
+    Node(BasicBoard basicBoard, List<Node> children, int depth) {
+        _Basic_board = basicBoard;
         _children = children;
         _value = Integer.MIN_VALUE;
         _depth = depth;
     }
 
-    public Board getBoard() {
-        return _board;
+    public BasicBoard getBoard() {
+        return _Basic_board;
     }
 
     public List<Node> getChildren() {
         return _children;
     }
 
-    public void setBoard(Board board) {
-        _board = board;
+    public void setBoard(BasicBoard basicBoard) {
+        _Basic_board = basicBoard;
     }
 
     public int getValue() {
@@ -70,12 +70,12 @@ public class Node {
         _depth = depth;
     }
 
-    public static Node of(Board board, int depth) {
-        return new Node(board, Collections.emptyList(), depth);
+    public static Node of(BasicBoard basicBoard, int depth) {
+        return new Node(basicBoard, Collections.emptyList(), depth);
     }
 
-    public static Node of(Board board, Coordinate1D move, int depth) {
-        Node node = new Node(board, Collections.emptyList(), depth);
+    public static Node of(BasicBoard basicBoard, Coordinate1D move, int depth) {
+        Node node = new Node(basicBoard, Collections.emptyList(), depth);
         node.setMove(move);
         return node;
     }
