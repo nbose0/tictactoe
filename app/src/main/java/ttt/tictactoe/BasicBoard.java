@@ -1,4 +1,4 @@
-package ttt.original;
+package ttt.tictactoe;
 
 import ttt.models.board.TicTacToeBoard;
 import ttt.models.position.Coordinate1D;

@@ -1,7 +1,7 @@
-package ttt.original.player.ai;
+package ttt.tictactoe.player.ai;
 
 import ttt.models.position.Coordinate1D;
-import ttt.original.BasicBoard;
+import ttt.tictactoe.BasicBoard;
 
 import java.util.Collections;
 import java.util.Comparator;

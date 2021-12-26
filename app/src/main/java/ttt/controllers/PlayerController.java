@@ -9,7 +9,7 @@ import ttt.models.position.CoordinateValue;
 import ttt.models.square.Square;
 import ttt.models.value.Value;
 
-public interface TicTacToePlayerController<C extends CoordinateValue, P extends Coordinate<C>, V extends Value, S extends Square<V>, B extends TicTacToeBoard<C, P, V, S>> {
+public interface PlayerController<C extends CoordinateValue, P extends Coordinate<C>, V extends Value, S extends Square<V>, B extends TicTacToeBoard<C, P, V, S>> {
 
     Pair<P, Token> getMove(B board);
 

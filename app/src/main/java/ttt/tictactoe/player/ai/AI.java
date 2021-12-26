@@ -1,10 +1,10 @@
-package ttt.original.player.ai;
+package ttt.tictactoe.player.ai;
 
 import ttt.models.Token;
 import ttt.models.position.Coordinate1D;
-import ttt.original.BasicBoard;
-import ttt.original.BasicBoardController;
-import ttt.original.BasicRuleEngine;
+import ttt.tictactoe.BasicBoard;
+import ttt.tictactoe.BasicBoardController;
+import ttt.tictactoe.BasicRuleEngine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,6 @@ public class AI {
     public Node buildTreeWithValues(Token playerToken) {
         Node root = _treeBuilder.buildTree();
         buildValues(root, playerToken, Token.X, 0);
-//       _treeBuilder.printBranch(root);
         return root;
     }
 
@@ -50,14 +49,7 @@ public class AI {
             }
         }
 
-        System.out.println("Possible Options: ");
-        for (Node node : _currentNode.getChildren()) {
-            System.out.printf("\nValue: %d, depth: %d\n", node._value, node._depth);
-            BasicBoardController.printS(node.getBoard());
-        }
-
         _currentNode = moveWithMax(_currentNode.getChildren());
-        System.out.printf("\nChosen move: (%d,%d) with value %d", _currentNode.getMove().x().getInt(), _currentNode.getMove().y().getInt(), _currentNode._value);
         return _currentNode._move;
     }
 

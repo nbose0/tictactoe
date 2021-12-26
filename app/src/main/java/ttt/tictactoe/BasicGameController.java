@@ -1,9 +1,9 @@
-package ttt.original;
+package ttt.tictactoe;
 
 import ttt.controllers.GameController;
 import ttt.models.position.Coordinate1D;
 import ttt.models.position.IntegerCoordinateValue;
-import ttt.original.player.BasicPlayerController;
+import ttt.tictactoe.player.BasicPlayerController;
 
 public class BasicGameController extends GameController<IntegerCoordinateValue, Coordinate1D, BasicValue, BasicSquare, BasicBoard> {
 

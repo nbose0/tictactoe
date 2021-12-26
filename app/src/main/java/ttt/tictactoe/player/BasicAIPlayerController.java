@@ -1,11 +1,11 @@
-package ttt.original.player;
+package ttt.tictactoe.player;
 
 import ttt.models.Pair;
 import ttt.models.Player;
 import ttt.models.Token;
 import ttt.models.position.Coordinate1D;
-import ttt.original.BasicBoard;
-import ttt.original.player.ai.AI;
+import ttt.tictactoe.BasicBoard;
+import ttt.tictactoe.player.ai.AI;
 
 public class BasicAIPlayerController extends BasicPlayerController {
 

@@ -1,9 +1,9 @@
-package ttt.original.player.ai;
+package ttt.tictactoe.player.ai;
 
 import ttt.models.Token;
 import ttt.models.board.TicTacToeBoard;
 import ttt.models.position.Coordinate1D;
-import ttt.original.*;
+import ttt.tictactoe.*;
 
 import java.util.*;
 

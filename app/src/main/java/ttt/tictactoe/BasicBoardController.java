@@ -1,4 +1,4 @@
-package ttt.original;
+package ttt.tictactoe;
 
 import ttt.controllers.BoardContoller;
 import ttt.models.Token;

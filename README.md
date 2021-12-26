@@ -1,7 +1,7 @@
-#Tic Tac Toe
+# Tic Tac Toe
 
 Tic Tac Toe Library
 
-##Motivation
+## Motivation
 Side project to work on designing skills
 

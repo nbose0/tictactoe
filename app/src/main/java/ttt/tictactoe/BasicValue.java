@@ -1,4 +1,4 @@
-package ttt.original;
+package ttt.tictactoe;
 
 import ttt.models.Token;
 import ttt.models.value.Value;

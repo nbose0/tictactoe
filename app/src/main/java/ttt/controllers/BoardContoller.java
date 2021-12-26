@@ -7,11 +7,11 @@ import ttt.models.position.CoordinateValue;
 import ttt.models.square.Square;
 import ttt.models.value.Value;
 
-public abstract class TicTacToeBoardContoller<C extends CoordinateValue, P extends Coordinate<C>, V extends Value, S extends Square<V>, B extends TicTacToeBoard<C, P, V, S>>{
+public abstract class BoardContoller<C extends CoordinateValue, P extends Coordinate<C>, V extends Value, S extends Square<V>, B extends TicTacToeBoard<C, P, V, S>>{
 
     protected B _board;
 
-    protected TicTacToeBoardContoller(B board) {
+    protected BoardContoller(B board) {
         this._board = board;
     }
 

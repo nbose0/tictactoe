@@ -5,11 +5,10 @@ package ttt;
 
 import ttt.models.Player;
 import ttt.models.Token;
-import ttt.original.GameController;
-import ttt.original.player.AIPlayerController;
-import ttt.original.player.HumanPlayerController;
-import ttt.original.player.PlayerController;
-import ttt.original.player.RandomPlayerController;
+import ttt.tictactoe.BasicGameController;
+import ttt.tictactoe.player.BasicAIPlayerController;
+import ttt.tictactoe.player.BasicHumanPlayerController;
+import ttt.tictactoe.player.BasicPlayerController;
 
 import java.util.Scanner;
 
@@ -17,11 +16,11 @@ public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        PlayerController player1 = AIPlayerController.of(Token.X);
+        BasicPlayerController player1 = BasicAIPlayerController.of(Token.X);
 //        PlayerController player2 = RandomPlayerController.of(Token.O);
-        PlayerController player2 = HumanPlayerController.of(Player.of(Token.O, ""), scanner);
+        BasicPlayerController player2 = BasicHumanPlayerController.of(Player.of(Token.O, ""), scanner);
 
-        GameController game = GameController.of(player1, player2);
+        BasicGameController game = BasicGameController.of(player1, player2);
         game.play();
         scanner.close();
     }

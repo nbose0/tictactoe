@@ -1,12 +1,12 @@
-package ttt.original.player;
+package ttt.tictactoe.player;
 
 import ttt.controllers.PlayerController;
 import ttt.models.Player;
 import ttt.models.position.Coordinate1D;
 import ttt.models.position.IntegerCoordinateValue;
-import ttt.original.BasicSquare;
-import ttt.original.BasicValue;
-import ttt.original.BasicBoard;
+import ttt.tictactoe.BasicSquare;
+import ttt.tictactoe.BasicValue;
+import ttt.tictactoe.BasicBoard;
 
 public abstract class BasicPlayerController implements PlayerController<IntegerCoordinateValue, Coordinate1D, BasicValue, BasicSquare, BasicBoard> {
 
